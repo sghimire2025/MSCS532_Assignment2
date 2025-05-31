@@ -13,7 +13,7 @@ def generateData(size):
 
 
 # Different dataset sizes
-sizes = [100, 1000]
+sizes = [100, 120]
 
 #insertion sort
 def insertionSort(nums):
@@ -26,7 +26,28 @@ def insertionSort(nums):
         nums[j + 1] = key
     return nums
 
+# quick sort
+def quickSort(numbers):
+   #base case
+    if len(numbers) <= 1:
+        return numbers
 
+    # pivot element
+    pivotElement = numbers[-1]
+
+    # Divide the list into two parts, less elements will go on left and  greater go on right
+    left = []   
+    right = []  
+
+    # Compare each element except the pivot itself
+    for element in numbers[:-1]:
+        if element <= pivotElement:
+            left.append(element)
+        else:
+            right.append(element)
+
+    # Recursively sort 
+    return quickSort(left) + [pivotElement] + quickSort(right)
 
 # Print out the algorithm performance
 def printAnalysis(sortingFunction, dataset, algorithm, datasetLabel):
@@ -47,7 +68,6 @@ print("Comparing Insertion Sort and Quick Sort\n")
 for size in sizes:
    
     datasets = generateData(size)
-    
     for label, data in datasets.items():
         printAnalysis(insertionSort, data, "Insertion Sort", label)
-       # printAnalysis - quick
+        printAnalysis(quickSort, data, "Quuick Sort", label)
