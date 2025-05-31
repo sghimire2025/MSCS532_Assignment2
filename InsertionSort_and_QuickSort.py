@@ -64,11 +64,11 @@ def printAnalysis(sortingFunction, dataset, algorithm, datasetLabel):
 
 
 
-print("Comparing Insertion Sort and Quick Sort\n")
+print("Comparing Insertion Sort and Quick Sort")
 for size in sizes:
    
     datasets = generateData(size)
-    print("\nTesting on data set of size: {size}\n")
+    print(f"\nTesting on data set of size:  {size}")
     for label, data in datasets.items():
         printAnalysis(insertionSort, data, "Insertion Sort", label)
         printAnalysis(quickSort, data, "Quuick Sort", label)
